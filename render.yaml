@@ -10,3 +10,18 @@ services:
       name: kafka-data
       mountPath: /bitnami/kafka
       sizeGB: 10
+    envVars:
+      - key: KAFKA_CFG_NODE_ID
+        value: 0
+      - key: KAFKA_CFG_PROCESS_ROLES
+        value: controller,broker
+      - key: KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP
+        value: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      - key: KAFKA_CFG_CONTROLLER_QUORUM_VOTERS
+        value: 0@kafka-9my9:9093
+      - key: KAFKA_CFG_CONTROLLER_LISTENER_NAMES
+        value: CONTROLLER
+      - key: KAFKA_CFG_LISTENERS
+        value: PLAINTEXT://kafka-9my9:29092,CONTROLLER://:9093 
+      - key: KAFKA_CFG_MAX_POLL_INTERVAL_MS
+        value: 600000
