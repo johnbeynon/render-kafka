@@ -1,0 +1,12 @@
+services:
+  - type: pserv
+    name: kafka
+    runtime: image
+    plan: standard
+    image:
+      url: docker.io/bitnami/kafka:latest
+    autoDeploy: true
+    disk:
+      name: kafka-data
+      mountPath: /bitnami/kafka
+      sizeGB: 10
